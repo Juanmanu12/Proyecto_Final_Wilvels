@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import productsRoutes from "./Routes/productsRoutes.js";
 
 const app = express();
 
@@ -17,20 +18,6 @@ const UsersSchema = mongoose.schema(
     }
 );
 
-const productSchema = mongoose.schema(
-    {
-        id: String,
-        name: String, 
-        prize: Number,
-        description: String,
-        genre: String, 
-        size: Number, 
-        stock: Number,
-        color: String,
-        review: String
-    
-    }
-);
 
 const purchasesSchema = mongoose.schema(
     {
