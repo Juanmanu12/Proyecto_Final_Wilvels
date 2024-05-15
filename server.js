@@ -4,7 +4,7 @@ import productsRoutes from "./Routes/productsRoutes.js";
 
 const app = express();
 
-app.use(express.json());
+app.use(productsRoutes());
 
 mongoose.connect();
 
