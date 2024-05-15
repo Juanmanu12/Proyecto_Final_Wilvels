@@ -8,15 +8,7 @@ app.use(express.json());
 
 mongoose.connect();
 
-const UsersSchema = mongoose.schema(
-    {
-        id: String,
-        firstname: String,
-        lastname: String,
-        email: String,
-        password: String
-    }
-);
+
 
 
 const purchasesSchema = mongoose.schema(
