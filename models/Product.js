@@ -1,4 +1,6 @@
-const productSchema = mongoose.schema(
+import mongoose from "../config/mongoose.config.js"
+
+const productSchema = mongoose.Schema(
     {
         id: String,
         name: String, 
