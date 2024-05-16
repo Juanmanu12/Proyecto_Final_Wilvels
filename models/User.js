@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from "../config/mongoose.config.js";
 
-const usersSchema = mongoose.schema({
+const usersSchema = mongoose.Schema({
   id: String,
   firstname: String,
   lastname: String,

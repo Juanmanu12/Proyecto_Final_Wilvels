@@ -2,12 +2,12 @@ import express from "express";
 import mongoose from "mongoose";
 import productControllers from "../Controllers/product_controllers.js";
 
-const router = express.Router();
+const productsRouter = express.Router();
 
-router.use(express.json());
+productsRouter.get("/api/products", productControllers.list);
+productsRouter.get("/api/products/:id", productControllers.find);
+productsRouter.post("/api/products", productControllers.create);
+productsRouter.patch("/api/products/:id", productControllers.update);
+productsRouter.delete("/api/products/:id", productControllers.destroy);
 
-app.get("/api/products", productControllers.list);
-app.get("/api/products/:id", productController.find);
-app.post("/api/products", productController.create);
-app.patch("/api/products/:id", productController.update);
-app.delete("/api/products/:id", productController.destroy);
+export default productsRouter;
