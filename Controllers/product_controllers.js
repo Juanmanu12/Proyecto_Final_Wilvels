@@ -37,27 +37,29 @@ async function create(req, res){
     res.json(nuevoProducto);
     } catch (err){
         res.status(500).json("Error del servidor");
+        console.log(err)
     }    
 }
 
 async function update(req, res){
    try {
-    const productoEncontrado = await Product.findById(req.params.id);
+    let productoEncontrado = await Product.findById(req.params.id);
 
-    productoEncontrado = req.body.name || productoEncontrado.name;
-    productoEncontrado = req.body.prize || productoEncontrado.prize;
-    productoEncontrado = req.body.description || productoEncontrado.description;
-    productoEncontrado = req.body.genre || productoEncontrado.genre;
-    productoEncontrado = req.body.size || productoEncontrado.size;
-    productoEncontrado = req.body.stock || productoEncontrado.stock;
-    productoEncontrado = req.body.color || productoEncontrado.color;
-    productoEncontrado = req.body.review || productoEncontrado.review;
+    productoEncontrado.name = req.body.name || productoEncontrado.name;
+    productoEncontrado.prize = req.body.prize || productoEncontrado.prize;
+    productoEncontrado.description = req.body.description || productoEncontrado.description;
+    productoEncontrado.genre = req.body.genre || productoEncontrado.genre;
+    productoEncontrado.size = req.body.size || productoEncontrado.size;
+    productoEncontrado.stock = req.body.stock || productoEncontrado.stock;
+    productoEncontrado.color = req.body.color || productoEncontrado.color;
+    productoEncontrado.review = req.body.review || productoEncontrado.review;
 
     await productoEncontrado.save();
     res.json(productoEncontrado);
     } 
     catch (err) {
         res.status(500).json("Error del servidor");
+        console.log(err)
     }
 }
 
