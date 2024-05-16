@@ -39,7 +39,7 @@ async function search(req, res) {
   }
 }
 
-async function updateUser(req, res) {
+async function updateUser(req, res) { // Pequeño error al patchear, se requiere contraseña si o si
   try {
     const user = await User.findById(req.params.id);
     const newUser = req.body;
