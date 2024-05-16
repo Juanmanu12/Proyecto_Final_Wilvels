@@ -1,3 +1,4 @@
+import { expressjwt } from "express-jwt";
 import express from "express";
 import userController from "../Controllers/users_controllers.js";
 
@@ -8,5 +9,7 @@ userRouter.get("/api/users", userController.list);
 userRouter.get("/api/users/:id", userController.search);
 userRouter.patch("/api/users/:id", userController.updateUser);
 userRouter.delete("/api/users/:id", userController.eliminate);
+userRouter.post("/api/users/login", userController.login);
+
 
 export default userRouter;
