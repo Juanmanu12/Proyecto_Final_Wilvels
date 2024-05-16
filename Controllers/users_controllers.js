@@ -1,5 +1,4 @@
-import jwt from "jsonwebtoken";
-
+// import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/User.js";
 
@@ -41,7 +40,8 @@ async function search(req, res) {
   }
 }
 
-async function updateUser(req, res) { // Pequeño error al patchear, se requiere contraseña si o si
+async function updateUser(req, res) {
+  // Pequeño error al patchear, se requiere contraseña si o si
   try {
     const user = await User.findById(req.params.id);
     const newUser = req.body;
@@ -70,25 +70,24 @@ async function eliminate(req, res) {
   }
 }
 
-async function login(req, res){
-  
+async function login(req, res) {
   try {
     const user = await User.findOne({ email: req.body.email });
-    if (user !== null){
+    if (user !== null) {
       const hashValido = await bcrypt.compare(req.body.password, user.password);
-      if (hashValido){
+      if (hashValido) {
         const tokenPayload = {
           sub: user.id,
-          iat: Date.now()
-        } 
+          iat: Date.now(),
+        };
+        res.json("Tus credenciales estan correctas :)")
       } else {
         res.json("Credenciales incorrectas");
       }
     } else {
       res.json("Este usuario no existe");
     }
-  }
-  catch (err){
+  } catch (err) {
     res.status(500).json("Error del servidor");
   }
 }
@@ -99,5 +98,5 @@ export default {
   search: search,
   updateUser: updateUser,
   eliminate: eliminate,
-  login: login
+  login: login,
 };

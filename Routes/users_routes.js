@@ -1,4 +1,3 @@
-import { expressjwt } from "express-jwt";
 import express from "express";
 import userController from "../Controllers/users_controllers.js";
 
