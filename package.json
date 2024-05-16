@@ -1,7 +1,6 @@
 {
   "name": "proyecto_ecommerce",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -16,5 +15,6 @@
     "bcryptjs": "^2.4.3",
     "express": "^4.19.2",
     "mongoose": "^8.3.4"
-  }
+  },
+  "description": ""
 }
