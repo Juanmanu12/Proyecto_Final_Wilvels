@@ -1,4 +1,4 @@
-// import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/User.js";
 
@@ -80,7 +80,8 @@ async function login(req, res) {
           sub: user.id,
           iat: Date.now(),
         };
-        res.json("Tus credenciales estan correctas :)")
+        const token = jwt.sign(tokenPayload, process.env.JWT_TOKEN);
+        res.json({ token: token });
       } else {
         res.json("Credenciales incorrectas");
       }
@@ -92,6 +93,15 @@ async function login(req, res) {
   }
 }
 
+async function profile(req, res) {
+  try {
+    const user = await User.findById(req.auth.sub);
+    res.json(`Hola, ${user.email} bienvenid@ a tu perfil`);
+  } catch (err) {
+    res.status(500).json("Algo salio mal")
+  }
+}
+
 export default {
   create: create,
   list: list,
@@ -99,4 +109,5 @@ export default {
   updateUser: updateUser,
   eliminate: eliminate,
   login: login,
+  profile: profile,
 };

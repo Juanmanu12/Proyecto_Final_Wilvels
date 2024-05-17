@@ -2,7 +2,6 @@ import mongoose from "../config/mongoose.config.js"
 
 const productSchema = mongoose.Schema(
     {
-        id: String,
         name: String, 
         prize: Number,
         description: String,
@@ -11,7 +10,6 @@ const productSchema = mongoose.Schema(
         stock: Number,
         color: String,
         review: String
-    
     }
 );
 
