@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/User.js";
 
@@ -39,7 +40,8 @@ async function search(req, res) {
   }
 }
 
-async function updateUser(req, res) { // Pequeño error al patchear, se requiere contraseña si o si
+async function updateUser(req, res) {
+  // Pequeño error al patchear, se requiere contraseña si o si
   try {
     const user = await User.findById(req.params.id);
     const newUser = req.body;
@@ -68,10 +70,44 @@ async function eliminate(req, res) {
   }
 }
 
+async function login(req, res) {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (user !== null) {
+      const hashValido = await bcrypt.compare(req.body.password, user.password);
+      if (hashValido) {
+        const tokenPayload = {
+          sub: user.id,
+          iat: Date.now(),
+        };
+        const token = jwt.sign(tokenPayload, process.env.JWT_TOKEN);
+        res.json({ token: token });
+      } else {
+        res.json("Credenciales incorrectas");
+      }
+    } else {
+      res.json("Este usuario no existe");
+    }
+  } catch (err) {
+    res.status(500).json("Error del servidor");
+  }
+}
+
+async function profile(req, res) {
+  try {
+    const user = await User.findById(req.auth.sub);
+    res.json(`Hola, ${user.email} bienvenid@ a tu perfil`);
+  } catch (err) {
+    res.status(500).json("Algo salio mal")
+  }
+}
+
 export default {
   create: create,
   list: list,
   search: search,
   updateUser: updateUser,
-  eliminate: eliminate
+  eliminate: eliminate,
+  login: login,
+  profile: profile,
 };

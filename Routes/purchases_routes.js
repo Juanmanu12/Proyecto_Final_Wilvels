@@ -1,14 +1,15 @@
 import express from "express";
-import purchasesController from "../Controllers/purchases_controllers.js";
-
-const  purchasesRoutes = express.Router();
-
-purchasesRoutes.post("/purchases/", purchasesController.create);
-purchasesRoutes.get("/purchases/",purchasesController.list);
-purchasesRoutes.get("/purchases/:id",purchasesController.search);
-purchasesRoutes.patch("/purchases/:id",purchasesController.update);
-purchasesRoutes.delete("/purchases/:id",purchasesController.delete);
 
 
+const  purchasesRouter = express.Router();
 
-export default purchasesRoutes;
+purchasesRouter.post("/purchases/:id");
+purchasesRouter.get("/purchases/:id");
+purchasesRouter.get("/user/:id");
+purchasesRouter.get("/products/:total");
+purchasesRouter.post("/purchases/:total");
+purchasesRouter.get("/purchases/:metodoPago");
+purchasesRouter.post("/purchases/:metodoPago");
+
+
+export default purchasesRouter;
