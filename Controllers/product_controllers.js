@@ -1,5 +1,4 @@
 import express from "express";
-
 import Product from "../models/Product.js";
 
 async function list(req, res){

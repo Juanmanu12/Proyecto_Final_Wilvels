@@ -1,15 +1,14 @@
 import express from "express";
-import mongoose from "mongoose";
+import purchasesController from "../Controllers/purchases_controllers.js";
 
-const  purchasesRouter = express.Router();
+const  purchasesRoutes = express.Router();
 
-purchasesRouter.post("/purchases/:id");
-purchasesRouter.get("/purchases/:id");
-purchasesRouter.get("/user/:id");
-purchasesRouter.get("/products/:total");
-purchasesRouter.post("/purchases/:total");
-purchasesRouter.get("/purchases/:metodoPago");
-purchasesRouter.post("/purchases/:metodoPago");
+purchasesRoutes.post("/purchases/", purchasesController.create);
+purchasesRoutes.get("/purchases/",purchasesController.list);
+purchasesRoutes.get("/purchases/:id",purchasesController.search);
+purchasesRoutes.patch("/purchases/:id",purchasesController.update);
+purchasesRoutes.delete("/purchases/:id",purchasesController.delete);
 
 
-export default purchasesRouter;
+
+export default purchasesRoutes;

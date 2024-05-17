@@ -1,16 +1,25 @@
 import mongoose from "../config/mongoose.config.js";
 
-const PurchasesSchema = mongoose.Schema({
-    id: Number,
-    userid: String,
-    productsid: String,
+const purchasesSchema = mongoose.Schema({
+    
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "User"
+    },
+    products: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Product"
+    }
+    ],
     total: Number,
-    Paymentmethods: {
-        type: String,
+    PaymentMethods: {
+        name: String,
+        id: Number,
       },
 
 });
 
-const Purchases = mongoose.model("Purchases", usersSchema);
+const Purchases = mongoose.model("Purchases", purchasesSchema);
 
 export default Purchases;
