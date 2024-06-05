@@ -1,4 +1,3 @@
-import express from "express";
 import Product from "../models/Product.js";
 
 async function list(req, res){
@@ -25,13 +24,13 @@ async function create(req, res){
     try {
     const nuevoProducto = await Product.create({
         name: req.body.name,
-        prize: req.body.prize,
+        price: req.body.price,
         description: req.body.description,
         genre: req.body.genre,
         size: req.body.size,
         stock: req.body.stock,
         color: req.body.color,
-        review: req.body.review
+        review: req.body.review,
     });
     res.json(nuevoProducto);
     } catch (err){
@@ -45,7 +44,7 @@ async function update(req, res){
     let productoEncontrado = await Product.findById(req.params.id);
 
     productoEncontrado.name = req.body.name || productoEncontrado.name;
-    productoEncontrado.prize = req.body.prize || productoEncontrado.prize;
+    productoEncontrado.price = req.body.price || productoEncontrado.price;
     productoEncontrado.description = req.body.description || productoEncontrado.description;
     productoEncontrado.genre = req.body.genre || productoEncontrado.genre;
     productoEncontrado.size = req.body.size || productoEncontrado.size;
@@ -64,7 +63,7 @@ async function update(req, res){
 
 async function destroy(req, res){
     try {
-    const productoEncontrado = await Product.findByIdAndDelete(req.params.id);
+    await Product.findByIdAndDelete(req.params.id);
     res.json("Usuario eliminado");
     }
     catch(err){

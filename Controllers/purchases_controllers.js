@@ -1,4 +1,3 @@
-import express from "express";
 import Purchases from "../models/Purchases.js";
 
 async function create(req, res) {
@@ -59,7 +58,7 @@ async function update(req,res){
 
 async function erase(req,res){
   try{
-    const purchaseCatch = await Purchases.findByIdAndDelete(req.param.id);
+    await Purchases.findByIdAndDelete(req.param.id);
     res.json("Orden Eliminada");
 
   }
