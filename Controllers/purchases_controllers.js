@@ -7,6 +7,7 @@ async function create(req, res) {
       users: req.body.users,
       products: req.body.products,
       total: req.body.total,
+      paymentMethod: req.body.paymentMethod
     });
     res.json(newPurchase);
   } 
@@ -73,5 +74,5 @@ export default {
     list: list,
     search: find,
     update: update,
-    delete: erase
+    erase: erase
   };

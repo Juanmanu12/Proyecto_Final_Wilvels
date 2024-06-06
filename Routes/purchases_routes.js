@@ -1,15 +1,15 @@
 import express from "express";
+import purchasesController from "../Controllers/purchases_controllers.js";
 
 
 const  purchasesRouter = express.Router();
 
-purchasesRouter.post("/api/purchases/:id");
-purchasesRouter.get("/api/purchases/:id");
-purchasesRouter.get("/api/user/:id");
-purchasesRouter.get("/api/products/:total");
-purchasesRouter.post("/api/purchases/:total");
-purchasesRouter.get("/api/purchases/:metodoPago");
-purchasesRouter.post("/api/purchases/:metodoPago");
+purchasesRouter.post("/api/purchases/", purchasesController.create);
+purchasesRouter.get("/api/purchases/:id", purchasesController.find);
+purchasesRouter.get("/api/purchases/", purchasesController.list);
+purchasesRouter.patch("/api/purchases/:id", purchasesController.update);
+purchasesRouter.delete("/api/purchases/:id", purchasesController.erase);
+
 
 
 export default purchasesRouter;
