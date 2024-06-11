@@ -35,7 +35,6 @@ async function create(req, res){
     res.json(nuevoProducto);
     } catch (err){
         res.status(500).json("Error del servidor");
-        console.log(err)
     }    
 }
 
@@ -64,7 +63,7 @@ async function update(req, res){
 async function destroy(req, res){
     try {
     await Product.findByIdAndDelete(req.params.id);
-    res.json("Usuario eliminado");
+    res.json("Producto eliminado");
     }
     catch(err){
         res.status(500).json("Error del servidor");
@@ -72,9 +71,9 @@ async function destroy(req, res){
 }
 
 export default {
-    list,
-    find,
-    create,
-    update,
-    destroy
+    list: list,
+    find: find,
+    create: create,
+    update: update,
+    destroy: destroy
 };

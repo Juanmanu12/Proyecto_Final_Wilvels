@@ -10,14 +10,14 @@ async function create(req, res) {
       paymentMethod: req.body.paymentMethod
     });
     res.json(newPurchase);
-  } 
+  }
   catch (err) {
     res.status(500).json("Error");
     console.log(err);
   }
 }
 
-async function list(req,res){
+async function list(req, res){
   try{
     const listPurchases = await Purchases.find();
     res.json(listPurchases);
@@ -28,7 +28,7 @@ async function list(req,res){
   }
 }
 
-async function find(req,res){
+async function find(req, res){
   try{
     const idPurchase = req.param.id;
     const purchase = await purchase.findById(idPurchase);
@@ -39,7 +39,7 @@ async function find(req,res){
   }
 }
 
-async function update(req,res){
+async function update(req, res){
   try{
     let purchaseCatch = await purchase.findById(req.param.id);
     purchaseCatch.idPurchase = req.body.idPurchase || purchaseCatch.idPurchase;
@@ -57,7 +57,7 @@ async function update(req,res){
 }
 }
 
-async function erase(req,res){
+async function erase(req, res){
   try{
     await Purchases.findByIdAndDelete(req.param.id);
     res.json("Orden Eliminada");
@@ -72,7 +72,7 @@ async function erase(req,res){
 export default {
     create: create,
     list: list,
-    search: find,
+    find: find,
     update: update,
     erase: erase
   };
