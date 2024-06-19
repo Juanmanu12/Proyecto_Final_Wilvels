@@ -7,6 +7,7 @@ import purchasesRoutes from "./Routes/purchases_routes.js";
 import categoriesRoutes from "./Routes/cathegories_routes.js";
 import authRoutes from "./Routes/auth_routes.js";
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
