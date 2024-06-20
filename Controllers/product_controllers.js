@@ -10,6 +10,7 @@ async function list(req, res){
 }
 
 async function find(req, res){
+
     try {
     const productId = req.params.id;
     const product = await Product.findById(productId);
@@ -21,6 +22,9 @@ async function find(req, res){
 
 }
 async function create(req, res){
+    console.log(req.file);
+    console.log(req.files);
+    console.log(req.body);
     try {
     const nuevoProducto = await Product.create({
         name: req.body.name,
@@ -31,9 +35,11 @@ async function create(req, res){
         stock: req.body.stock,
         color: req.body.color,
         review: req.body.review,
+        image: req.file.filename
     });
     res.json(nuevoProducto);
     } catch (err){
+        console.log(err);
         res.status(500).json("Error del servidor");
     }    
 }
@@ -50,6 +56,7 @@ async function update(req, res){
     productoEncontrado.stock = req.body.stock || productoEncontrado.stock;
     productoEncontrado.color = req.body.color || productoEncontrado.color;
     productoEncontrado.review = req.body.review || productoEncontrado.review;
+    productoEncontrado.image = req.file.filename  || productoEncontrado.image;
 
     await productoEncontrado.save();
     res.json(productoEncontrado);

@@ -10,6 +10,7 @@ const productSchema = mongoose.Schema(
         stock: Number,
         color: String,
         review: String,
+        image: String
     }
 );
 

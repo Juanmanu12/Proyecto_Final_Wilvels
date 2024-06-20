@@ -4,7 +4,7 @@ async function create(req, res){
     try {
     const nuevaCategoria = await Category.create({
         name: req.body.name,
-        products: req.body.products
+        description: req.body.description
     });
     res.json(nuevaCategoria);
 } catch(err){
@@ -36,7 +36,7 @@ async function update(req, res){
         let categoriaEncontrada = await Category.findById(req.params.id);
 
         categoriaEncontrada.name = req.body.name || categoriaEncontrada.name;
-        categoriaEncontrada.product = req.body.product || categoriaEncontrada.product;
+        categoriaEncontrada.description = req.body.description || categoriaEncontrada.description;
 
         await categoriaEncontrada.save();
         res.json(categoriaEncontrada);
