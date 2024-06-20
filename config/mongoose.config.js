@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb+srv://admin:admin@clusterwillvels.cmha8v2.mongodb.net/WillVelsDataBase");
+mongoose.connect(process.env.ConectionBD);
 
 export default mongoose;
