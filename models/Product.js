@@ -2,14 +2,24 @@ import mongoose from "../config/mongoose.config.js"
 
 const productSchema = mongoose.Schema(
     {
-        name: String, 
-        price: Number,
+        name: String,
         description: String,
-        genre: String, 
-        size: Number, 
+        size: [
+            {
+                code: String, 
+                price: Number
+            }
+        ],
+        aroma: {
+            type: [String],
+            default: ["Aroma 1", "Aroma 2", "Aroma 3"]
+        },
+
+        color: {
+            type: [String],
+            default: ["Color 1", "Color 2", "Color 3"]
+        },
         stock: Number,
-        color: String,
-        review: String,
         image: String
     }
 );
