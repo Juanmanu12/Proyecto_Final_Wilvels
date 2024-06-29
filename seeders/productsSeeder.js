@@ -81,7 +81,7 @@ async function productSeeder(){
         scent: ["Bebé", "Lavanda", "Maracuyá"],
         color: ["Azul Pastel", "Verde Pastel", "Rosado"],
         stock: 28,
-        image: "ANILLO_TRIDIMENCIONAL.jpeg"
+        image: "ANILLO_TRIDIMENSIONAL.jpeg"
     });
     await product.create({
         _id: "668035ae29fba41181420ad9",
@@ -124,24 +124,24 @@ async function productSeeder(){
         image: "BUHO.jpeg"
     });
     await product.create({
-        _id: "667f78578442cffa201554ff",
-        name: "Bola de Rosas",
+        _id: "668083782149279d77ab4a58",
+        name: "Buho",
         size: [{
             code: "S",
-            price: 15000,
+            price: 40000,
         },
         {
             code: "M",
-            price: 20000
+            price: 55000
         },
         {
             code: "L",
-            price: 25000
+            price: 65000
         }],
         scent: ["Bebé", "Lavanda", "Maracuyá"],
         color: ["Azul Pastel", "Verde Pastel", "Rosado"],
-        stock: 45,
-        image: "BOLA_DE_ROSAS.jpeg"
+        stock: 48,
+        image: "BUHO.jpeg"
     });
     process.exit();
 }

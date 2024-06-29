@@ -23,12 +23,12 @@ async function find(req, res){
 }
 async function create(req, res){
     try {
-        const { name, description, size, aroma, color, stock, image } = req.body;
+        const { name, description, size, scent, color, stock, image } = req.body;
         const newProduct = new Product({
           name,
           description,
           size,
-          aroma,
+          scent,
           color,
           stock,
           image
@@ -49,10 +49,11 @@ async function update(req, res){
     productoEncontrado.name = req.body.name || productoEncontrado.name;
     productoEncontrado.price = req.body.price || productoEncontrado.price;
     productoEncontrado.description = req.body.description || productoEncontrado.description;
-    productoEncontrado.genre = req.body.genre || productoEncontrado.genre;
+    productoEncontrado.scent = req.body.scent || productoEncontrado.scent;
     productoEncontrado.size = req.body.size || productoEncontrado.size;
     productoEncontrado.stock = req.body.stock || productoEncontrado.stock;
-    productoEncontrado.color = req.body.color || productoEncontrado.color;    
+    productoEncontrado.color = req.body.color || productoEncontrado.color;
+    productoEncontrado.image = req.file.filename || productoEncontrado.image    
     
 
     
