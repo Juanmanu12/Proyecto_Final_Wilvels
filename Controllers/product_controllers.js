@@ -22,15 +22,12 @@ async function find(req, res){
 
 }
 async function create(req, res){
-    console.log(req.file);
-    console.log(req.files);
-    console.log(req.body);
     try {
     const nuevoProducto = await Product.create({
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
-        genre: req.body.genre,
+        scent: req.body.scent,
         size: req.body.size,
         stock: req.body.stock,
         color: req.body.color,
@@ -51,7 +48,7 @@ async function update(req, res){
     productoEncontrado.name = req.body.name || productoEncontrado.name;
     productoEncontrado.price = req.body.price || productoEncontrado.price;
     productoEncontrado.description = req.body.description || productoEncontrado.description;
-    productoEncontrado.genre = req.body.genre || productoEncontrado.genre;
+    productoEncontrado.scent = req.body.scent || productoEncontrado.scent,
     productoEncontrado.size = req.body.size || productoEncontrado.size;
     productoEncontrado.stock = req.body.stock || productoEncontrado.stock;
     productoEncontrado.color = req.body.color || productoEncontrado.color;

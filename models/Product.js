@@ -10,7 +10,7 @@ const productSchema = mongoose.Schema(
                 price: Number
             }
         ],
-        aroma: {
+        scent: {
             type: [String],
             default: ["Aroma 1", "Aroma 2", "Aroma 3"]
         },
@@ -23,6 +23,21 @@ const productSchema = mongoose.Schema(
         image: String
     }
 );
+
+/*const productSchema = mongoose.Schema(
+    {
+    name: String,
+    description: String,
+    price: Number,
+    scent: String,
+    size: String,
+    color: String,
+    stock: String,
+    image: String
+
+    }
+)
+*/
 
 const Product = mongoose.model("Product", productSchema);
 
