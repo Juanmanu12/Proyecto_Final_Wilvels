@@ -10,7 +10,6 @@ const productSchema = mongoose.Schema(
             {
                 code: String, 
                 price: Number,
-                
             }
         ],
         scent: {
@@ -24,26 +23,9 @@ const productSchema = mongoose.Schema(
         },
         stock: Number,
         image: String,
-        
-        
 
     }
 );
-
-/*const productSchema = mongoose.Schema(
-    {
-    name: String,
-    description: String,
-    price: Number,
-    scent: String,
-    size: String,
-    color: String,
-    stock: String,
-    image: String
-
-    }
-)
-*/
 
 const Product = mongoose.model("Product", productSchema);
 
