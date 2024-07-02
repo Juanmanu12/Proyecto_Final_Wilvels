@@ -50,11 +50,18 @@ async function update(req, res){
     productoEncontrado.price = req.body.price || productoEncontrado.price;
     productoEncontrado.description = req.body.description || productoEncontrado.description;
     productoEncontrado.scent = req.body.scent || productoEncontrado.scent;
-    productoEncontrado.size = req.body.size || productoEncontrado.size;
+    productoEncontrado.code = req.body.code || productoEncontrado.code;
     productoEncontrado.stock = req.body.stock || productoEncontrado.stock;
     productoEncontrado.color = req.body.color || productoEncontrado.color;
-    productoEncontrado.image = req.file.filename || productoEncontrado.image    
+    // productoEncontrado.image = req.file.filename || productoEncontrado.image 
     
+    
+    if (req.body.size && req.body.size.length > 0) {
+        productoEncontrado.size = req.body.size.map(sizeItem => ({
+          code: sizeItem.code,
+          price: sizeItem.price
+        }));
+      }    
 
     
     await productoEncontrado.save();
