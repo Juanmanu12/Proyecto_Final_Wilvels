@@ -7,9 +7,12 @@ const purchasesSchema = mongoose.Schema({
       ref: "User"
     },
     products: [
-      {
+       { 
+        productDetail: {
         type: mongoose.Types.ObjectId,
         ref: "Product"
+      },
+      quantity: Number
     }
     ],
     total: Number,
@@ -17,6 +20,12 @@ const purchasesSchema = mongoose.Schema({
         name: String,
         id: Number,
       },
+      name: String,
+      lastname: String,
+      address: String,
+      apto: String,
+      city: String,
+      state: String,
 
 });
 
