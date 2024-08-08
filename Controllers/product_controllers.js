@@ -53,7 +53,7 @@ async function update(req, res){
     productoEncontrado.code = req.body.code || productoEncontrado.code;
     productoEncontrado.stock = req.body.stock || productoEncontrado.stock;
     productoEncontrado.color = req.body.color || productoEncontrado.color;
-    // productoEncontrado.image = req.file.filename || productoEncontrado.image 
+    productoEncontrado.image = req.file.filename || productoEncontrado.image 
     
     
     if (req.body.size && req.body.size.length > 0) {

@@ -25,7 +25,7 @@ const purchasesSchema = mongoose.Schema({
       address: String,
       apto: String,
       city: String,
-      state: String,
+      department: String,
 
 });
 

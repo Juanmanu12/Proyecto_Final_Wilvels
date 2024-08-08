@@ -7,7 +7,12 @@ async function create(req, res) {
       users: req.body.users,
       products: req.body.products,
       total: req.body.total,
-      paymentMethod: req.body.paymentMethod
+      paymentMethod: req.body.paymentMethod,
+      name: req.body.name,
+      lastname: req.body.lastname,
+      address: req.body.address,
+      city: req.body.city,
+      department: req.body.department
     });
     res.json(newPurchase);
   }
